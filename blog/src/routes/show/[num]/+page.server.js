@@ -1,6 +1,7 @@
-export async function load({ fetch, params, parent, setHeaders }) {
+export async function load({ fetch, params, parent, setHeaders, locals }) {
 	// const parent_data = await parent();
 	// console.log(parent_data);
+	// console.log('locals', locals);
 	const res = await fetch(`https://syntax.fm/api/shows/${params.num}`);
 	const data = await res.json();
 
@@ -9,6 +10,7 @@ export async function load({ fetch, params, parent, setHeaders }) {
 	});
 
 	return {
-		episode: data
+		episode: data,
+		user: locals.user
 	};
 }
