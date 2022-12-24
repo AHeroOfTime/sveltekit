@@ -34,7 +34,7 @@ export const handle = sequence(logger, authorize);
 // 	return fetch(request);
 // }
 
-// allows you to incept errors
+// allows you to intercept errors
 export function handleError({ error, event }) {
 	// logger(error, event)
 	return {
