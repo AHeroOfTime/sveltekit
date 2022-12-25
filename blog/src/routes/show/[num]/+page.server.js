@@ -1,6 +1,9 @@
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export async function load({ fetch, params, parent, setHeaders, locals }) {
+	// handling redirects
+	if (!locals?.user?.id) throw redirect(307, '/');
+
 	// const parent_data = await parent();
 	// console.log(parent_data);
 	// console.log('locals', locals);
