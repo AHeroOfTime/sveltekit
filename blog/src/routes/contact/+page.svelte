@@ -1,7 +1,21 @@
 <script>
   import { enhance } from '$app/forms'
+
+  export let form;
+  $: console.log('form', form)
 </script>
 
+<!-- Fail -->
+{#if form?.error_message}
+  <p class="message">
+    {form.error_message}
+  </p>
+{/if}
+
+<!-- Success -->
+{#if form?.message}
+  <p>{form.message}</p>
+{:else}
 <form use:enhance method="POST">
   <label>
     Name: <input type="text" required name="name" id="name" />
@@ -14,6 +28,7 @@
   </label>
   <button type="submit">Send Email</button>
 </form>
+{/if}
 
 <style>
   form {
