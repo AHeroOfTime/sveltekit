@@ -16,7 +16,20 @@
 {#if form?.message}
   <p>{form.message}</p>
 {:else}
-<form use:enhance method="POST">
+<!-- aument use:enhance w/ ={ } -->
+<form use:enhance={ (form, data, action, cancel ) => {
+  // form -> form element
+  // data -> FormData object
+  // action -> url form posts to
+  // cancel() -> cancels form from submitting
+  return ({result, update}) => {
+    update();
+    // result -> 'ActionResult'
+    // update() -> runs all of the default use:enhance
+  }
+}}
+action="?/email"
+method="POST">
   <label>
     Name: <input type="text" required name="name" id="name" />
   </label>

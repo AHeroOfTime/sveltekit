@@ -2,7 +2,8 @@ import { fail } from '@sveltejs/kit';
 
 // POST request for route
 export const actions = {
-	default: async ({ locals, request }) => {
+	// can have more than one action, BUT if you have more than one you cant have one named default, so default OR named actions
+	email: async ({ locals, request }) => {
 		if (!locals?.user?.roles?.includes('admin')) {
 			return fail(401, {
 				error_message: 'Un-authorized'
@@ -20,5 +21,8 @@ export const actions = {
 		return {
 			message: 'Email sent!'
 		};
+	},
+	test: () => {
+		console.log('hit test action');
 	}
 };
