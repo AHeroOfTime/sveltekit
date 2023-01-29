@@ -1,4 +1,9 @@
 <script>
+  import { env } from '$env/dynamic/public'
+  // console.log('env', env);
+  import { PUBLIC_LUT_PUB_KEY } from '$env/static/public';
+
+  import { browser, building, dev, version } from '$app/environment'
   import {navigating} from '$app/stores'
   import Header from "./Header.svelte";
   import Footer from "./Footer.svelte";
@@ -7,6 +12,11 @@
 
   export let data;
   $: ({ all_episodes} = data)
+  console.log(browser, building, dev, version);
+  // browser => boolean, if app is running in the browser
+  // dev => boolean, if in development
+  // building => boolean, true if currently building for production
+  // version => config.kit.version.name
 </script>
 
 <Header />
