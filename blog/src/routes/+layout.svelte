@@ -29,9 +29,9 @@
 
 <Header />
 
-{#if !!$navigating}
+<!-- {#if !!$navigating}
   <div class="loading">Loading</div>
-{/if}
+{/if} -->
 
 <main>
   <div class="main">
@@ -45,7 +45,7 @@
 
 <Footer />
 
-<style>
+<style lang="postcss">
   main {
     display: grid;
     grid-template-columns: 300px 1fr;
